@@ -9,12 +9,12 @@ export default function JadwalShalat() {
   const [jadwal, setJadwal] = useState(null);
   const [tanggal, setTanggal] = useState('');
   const [jamSekarang, setJamSekarang] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const savedMode = localStorage.getItem('darkMode');
-    if (savedMode) setIsDarkMode(savedMode === 'true');
+    setIsDarkMode(savedMode ? savedMode === 'true' : true);
 
     const updateWaktu = () => {
       const now = new Date();
@@ -42,7 +42,6 @@ export default function JadwalShalat() {
 
   const mintaLokasi = async () => {
     if (!navigator.geolocation) return setLokasi('Browser tidak mendukung lokasi');
-    
     setIsLoading(true);
     try {
       navigator.geolocation.getCurrentPosition(async pos => {
@@ -63,8 +62,7 @@ export default function JadwalShalat() {
           });
 
           setJadwal(res2.data.data.timings);
-        } catch (err) {
-          console.error(err);
+        } catch {
           setLokasi('Gagal mendapatkan data lokasi');
         } finally {
           setIsLoading(false);
@@ -73,19 +71,19 @@ export default function JadwalShalat() {
         setLokasi('Izin lokasi ditolak');
         setIsLoading(false);
       });
-    } catch (error) {
+    } catch {
       setIsLoading(false);
     }
   };
 
-  const modeClass = isDarkMode ? 'dark bg-gradient-to-br from-gray-900 to-gray-800 text-white' : 'bg-gradient-to-br from-blue-50 to-white text-gray-800';
+  const modeClass = isDarkMode ? 'dark bg-[#0f172a] text-white' : 'bg-white text-gray-800';
   const waktuStyle = {
-    Fajr: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-    Sunrise: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200',
-    Dhuhr: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-    Asr: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-    Maghrib: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
-    Isha: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+    Fajr: 'bg-blue-800 text-white',
+    Sunrise: 'bg-amber-700 text-white',
+    Dhuhr: 'bg-yellow-600 text-white',
+    Asr: 'bg-orange-600 text-white',
+    Maghrib: 'bg-red-600 text-white',
+    Isha: 'bg-purple-800 text-white',
   };
 
   const labels = {
@@ -99,86 +97,54 @@ export default function JadwalShalat() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${modeClass}`}>
-      {/* Navbar */}
-      <div className={`flex justify-between items-center p-4 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-md`}>
+      <div className="flex justify-between items-center p-4 shadow bg-[#1e293b]">
         <Link to="/" title="Home">
-          <IoHome className={`text-2xl ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-black'}`} />
+          <IoHome className="text-2xl text-white hover:opacity-80" />
         </Link>
-        <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">
-          Jadwal Shalat
-        </h1>
-        <button 
-          onClick={toggleMode}
-          className={`p-2 rounded-full ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'}`}
-        >
-          {isDarkMode ? <CiLight className="text-xl" /> : <CiDark className="text-xl" />}
+        <h1 className="text-xl font-bold text-white">Jadwal Shalat</h1>
+        <button onClick={toggleMode} className="bg-gray-700 hover:bg-gray-600 p-2 rounded-full">
+          {isDarkMode ? <CiLight className="text-white text-xl" /> : <CiDark className="text-gray-800 text-xl" />}
         </button>
       </div>
 
       <div className="max-w-xl mx-auto p-6 text-center">
-        {/* Current Time Section */}
-        <div className={`p-6 rounded-xl mb-6 ${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg`}>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Waktu sekarang:</p>
-          <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">
-            {jamSekarang}
-          </h2>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{tanggal}</p>
+        <div className="p-6 rounded-xl mb-6 bg-gray-800 shadow">
+          <p className="text-sm text-gray-400 mb-1">Waktu sekarang:</p>
+          <h2 className="text-4xl font-bold text-emerald-400">{jamSekarang}</h2>
+          <p className="text-sm text-gray-300 mt-1">{tanggal}</p>
         </div>
 
-        {/* Location and Prayer Times */}
-        <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg`}>
-          <h2 className="text-xl font-bold mb-2">Jadwal Shalat</h2>
-          <p className="text-sm opacity-70 mb-4">{lokasi}</p>
+        <div className="p-6 rounded-xl bg-gray-800 shadow">
+          <h2 className="text-xl font-bold mb-2 text-white">Jadwal Shalat</h2>
+          <p className="text-sm text-gray-400 mb-4">{lokasi}</p>
 
           <button
             onClick={mintaLokasi}
             disabled={isLoading}
-            className={`relative px-6 py-3 rounded-full font-medium shadow-md transition-all duration-300 mb-6
-              ${isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white'}`}
+            className={`relative px-6 py-3 rounded-full font-medium shadow-md mb-6 transition-all
+              ${isLoading ? 'bg-gray-500' : 'bg-emerald-600 hover:bg-emerald-700 text-white'}`}
           >
-            {isLoading ? (
-              <>
-                <span className="opacity-0">Memuat...</span>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                </div>
-              </>
-            ) : (
-              'Lihat Jadwal Shalat'
-            )}
+            {isLoading ? 'Memuat...' : 'Lihat Jadwal Shalat'}
           </button>
 
           {jadwal ? (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {Object.keys(labels).map((key) => (
-                  <div 
-                    key={key} 
-                    className={`p-3 rounded-lg transition-all duration-200 hover:scale-105 ${waktuStyle[key]}`}
-                  >
-                    <span className="block text-sm font-semibold">{labels[key]}</span>
-                    <span className="block text-xl font-bold">{jadwal[key]}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-xs text-center opacity-60">
-                Menurut: Kemenag · Zona: GMT+07:00 · Waktu dapat berbeda
-              </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {Object.keys(labels).map((key) => (
+                <div key={key} className={`p-4 rounded-xl shadow ${waktuStyle[key]}`}>
+                  <span className="block text-sm font-semibold">{labels[key]}</span>
+                  <span className="block text-2xl font-bold mt-1">{jadwal[key]}</span>
+                </div>
+              ))}
             </div>
           ) : (
-            <div className="p-8 text-center">
-              <p className="text-gray-500 dark:text-gray-400">
-                Klik tombol di atas untuk melihat jadwal shalat berdasarkan lokasimu.
-              </p>
-            </div>
+            <div className="text-gray-400">Klik tombol untuk melihat jadwal berdasarkan lokasimu.</div>
           )}
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="text-center p-4 text-xs text-gray-500 dark:text-gray-400 mt-8">
-        Jadwal shalat akan diperbarui secara otomatis
-      </div>
+      <footer className="text-center p-4 text-xs text-gray-400 mt-10">
+        Jadwal otomatis berdasarkan lokasi dan zona waktu Anda.
+      </footer>
     </div>
   );
 }

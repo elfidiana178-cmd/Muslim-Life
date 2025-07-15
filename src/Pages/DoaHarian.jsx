@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import { CiDark, CiLight } from 'react-icons/ci';
 import { IoHome } from 'react-icons/io5';
 
-const daftarDoa = [
+const doaList = [
+  {
+    judul: "Doa Bangun Tidur",
+    arab: "الْـحَمْـدُ للهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+    latin: "Alhamdu lillaahil-ladzii ahyaanaa ba’da maa amaatanaa wa ilayhin-nushuuru",
+    arti: "Segala puji bagi Allah yang telah menghidupkan kami setelah mematikan kami, dan kepada-Nya kami akan kembali."
+  },
   {
     judul: "Doa Sebelum Makan",
     arab: "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا، وَقِنَا عَذَابَ النَّارِ",
@@ -17,26 +23,40 @@ const daftarDoa = [
     arti: "Segala puji bagi Allah yang telah memberi kami makan dan minum, serta menjadikan kami termasuk orang-orang muslim."
   },
   {
+    judul: "Doa Keluar Rumah",
+    arab: "بِسْمِ اللهِ، تَوَكَّلْتُ عَلَى اللهِ، لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللهِ",
+    latin: "Bismillaah, tawakkaltu ‘alallaah, laa hawla wa laa quwwata illaa billaah",
+    arti: "Dengan nama Allah, aku bertawakal kepada Allah, tidak ada daya dan kekuatan kecuali dengan pertolongan Allah."
+  },
+  {
     judul: "Doa Masuk Rumah",
     arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلِجِ وَخَيْرَ الْمَخْرَجِ",
     latin: "Allahumma inni as’aluka khaira al-mawliji wa khaira al-makhraji",
     arti: "Ya Allah, aku memohon kepada-Mu kebaikan saat masuk dan keluar rumah."
   },
+  {
+    judul: "Doa Sebelum Tidur",
+    arab: "بِاسْمِكَ اللَّهُمَّ أَحْيَا وَأَمُوتُ",
+    latin: "Bismikallahumma ahyaa wa amuut",
+    arti: "Dengan nama-Mu ya Allah aku hidup dan aku mati."
+  },
 ];
 
 export default function DoaHarian() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     const saved = localStorage.getItem("darkMode");
-    if (saved) setIsDarkMode(saved === "true");
+    if (saved !== null) {
+      setIsDarkMode(saved === "true");
+    }
   }, []);
 
   const toggleMode = () => {
     setIsDarkMode(prev => {
-      const newMode = !prev;
-      localStorage.setItem("darkMode", newMode.toString());
-      return newMode;
+      const next = !prev;
+      localStorage.setItem("darkMode", next.toString());
+      return next;
     });
   };
 
@@ -55,14 +75,14 @@ export default function DoaHarian() {
         </button>
       </div>
 
-      {/* Daftar Doa */}
+      {/* Doa List */}
       <div className="p-4 space-y-6 max-w-3xl mx-auto">
-        {daftarDoa.map((doa, index) => (
-          <div key={index} className={`p-4 rounded-lg shadow ${isDarkMode ? "bg-gray-800" : "bg-gray-100"}`}>
+        {doaList.map((doa, i) => (
+          <div key={i} className={`p-4 rounded-lg shadow transition ${isDarkMode ? "bg-gray-800" : "bg-gray-100"}`}>
             <h2 className="text-lg font-semibold mb-2">{doa.judul}</h2>
-            <p className="text-right font-[Amiri] text-xl leading-loose">{doa.arab}</p>
-            <p className="text-sm italic mt-2 opacity-80">{doa.latin}</p>
-            <p className="text-sm mt-1">{doa.arti}</p>
+            <p className="text-right font-[Amiri] text-xl leading-relaxed mb-2">{doa.arab}</p>
+            <p className="text-sm italic text-gray-400">{doa.latin}</p>
+            <p className="text-sm mt-2">{doa.arti}</p>
           </div>
         ))}
       </div>

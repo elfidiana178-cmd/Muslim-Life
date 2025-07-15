@@ -1,8 +1,8 @@
-// src/Pages/SurahList.jsx
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { CiDark, CiLight } from 'react-icons/ci';
+import { IoHome } from 'react-icons/io5';
 
 export default function SurahList() {
   const [surahs, setSurahs] = useState([]);
@@ -25,18 +25,25 @@ export default function SurahList() {
     surah.name.transliteration.id.toLowerCase().includes(search.toLowerCase())
   );
 
-  return (
-    <div className={isDarkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-black'}>
-      <div className="max-w-3xl mx-auto p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold">Daftar Surah</h1>
-          <button onClick={toggleMode}>
-            {isDarkMode ? <CiLight size={28}/> : <CiDark size={28}/>}
-          </button>
-        </div>
+  const modeClass = isDarkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-gray-900';
+  const cardClass = isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200';
 
+  return (
+    <div className={`min-h-screen transition-all duration-300 ${modeClass}`}>
+      {/* Navbar */}
+      <div className={`flex justify-between items-center p-4 shadow-md ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+        <Link to="/" title="Kembali ke Home">
+          <IoHome className={`text-2xl ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-black'}`} />
+        </Link>
+        <h1 className="text-xl font-bold">Daftar Surah</h1>
+        <button onClick={toggleMode} className="p-2 rounded-full">
+          {isDarkMode ? <CiLight className="text-xl" /> : <CiDark className="text-xl" />}
+        </button>
+      </div>
+
+      <div className="max-w-3xl mx-auto p-6">
         <input
-          className="w-full p-2 border rounded mb-4"
+          className="w-full px-4 py-2 rounded-lg mb-6 border focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-800 dark:border-gray-600"
           type="text"
           placeholder="Cari surah..."
           value={search}
@@ -45,19 +52,22 @@ export default function SurahList() {
 
         <ul className="space-y-3">
           {filtered.map(surah => (
-            <li key={surah.number} className="p-4 bg-green-100 rounded">
-              <Link to={`/surah/${surah.number}`}>
-                <div className="flex justify-between">
-                  <span>{surah.number}. {surah.name.transliteration.id}</span>
-                  <span className="font-[Amiri]">{surah.name.short}</span>
+            <li key={surah.number}>
+              <Link 
+                to={`/surah/${surah.number}`}
+                className={`block p-4 rounded-lg shadow transition-transform transform hover:scale-[1.02] ${cardClass}`}
+              >
+                <div className="flex justify-between items-center">
+                  <span className="text-lg font-semibold">{surah.number}. {surah.name.transliteration.id}</span>
+                  <span className="font-[Amiri] text-2xl">{surah.name.short}</span>
                 </div>
-                <p className="text-sm opacity-60">{surah.name.translation.id}</p>
+                <p className="text-sm opacity-70 mt-1">{surah.name.translation.id}</p>
               </Link>
             </li>
           ))}
         </ul>
 
-        <Link to="/" className="block mt-6 text-blue-600">← Kembali ke Dashboard</Link>
+        <Link to="/" className="block mt-8 text-center text-blue-500 hover:underline text-sm">← Kembali ke Dashboard</Link>
       </div>
     </div>
   );
