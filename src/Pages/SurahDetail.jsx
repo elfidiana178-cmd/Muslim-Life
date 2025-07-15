@@ -39,32 +39,37 @@ function SurahDetail() {
   }, [id]);
 
   const togglePlayPause = (verseIndex, audioUrl) => {
-    if (playing === verseIndex) {
-      // Jika ayat yang sama diklik, stop audio
+  if (playing !== null) {
+    // Jika sedang memutar, stop dulu
+    if (audio) {
       audio.pause();
-      setPlaying(null);
-    } else {
-      // Jika tombol Play pada ayat lain diklik, stop audio sebelumnya
-      if (audio) {
-        audio.pause(); // Stop audio yang sedang diputar
-        audio.currentTime = 0; // Reset posisi audio ke awal
-      }
-
-      const newAudio = new Audio(audioUrl); // Membuat objek audio baru untuk ayat yang dipilih
-
-      // Menangani event 'ended' agar audio berhenti dengan benar setelah selesai diputar
-      newAudio.addEventListener('ended', () => {
-        setPlaying(null); // Reset state playing setelah audio selesai
-      });
-
-      newAudio.play().catch((error) => {
-        console.error("Error playing audio:", error);
-      });
-
-      setAudio(newAudio); // Simpan objek audio ke state
-      setPlaying(verseIndex); // Update state playing
+      audio.currentTime = 0;
     }
-  };
+  }
+
+  const newAudio = new Audio(audioUrl);
+
+  // Event ketika audio selesai, langsung mainkan ayat selanjutnya
+  newAudio.addEventListener('ended', () => {
+    const nextIndex = verseIndex + 1;
+    if (surah && nextIndex < surah.verses.length) {
+      const nextAudioUrl = surah.verses[nextIndex].audio.primary;
+      togglePlayPause(nextIndex, nextAudioUrl); // Rekursif play ayat berikutnya
+    } else {
+      // Sudah ayat terakhir
+      setPlaying(null);
+      setAudio(null);
+    }
+  });
+
+  newAudio.play().catch((error) => {
+    console.error("Error playing audio:", error);
+  });
+
+  setAudio(newAudio);
+  setPlaying(verseIndex);
+};
+
 
   const toggleMode = () => {
     setIsDarkMode(prevMode => {
