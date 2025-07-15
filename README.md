@@ -59,8 +59,7 @@ Langsung pakai!
 
  ## ☕ Dukung Kami
 
-Suka dengan aplikasi ini?  
-**[Belikan saya secangkir kopi](https://saweria.co/mdhyaulatha)** untuk mendukung pengembangan Muslim Life 🙏
+Suka dengan aplikasi ini?  **[Belikan saya secangkir kopi](https://saweria.co/mdhyaulatha)** untuk mendukung pengembangan Muslim Life 🙏
 
 
 ---
