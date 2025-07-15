@@ -5,55 +5,50 @@ import { CiDark } from "react-icons/ci";
 import { CiLight } from "react-icons/ci";
 
 function Home() {
-    const [surahs, setSurah] = useState([]); // Data asli
-    const [filteredSurahs, setFilteredSurahs] = useState([]); // Data setelah filter
+    const [surahs, setSurah] = useState([]);
+    const [filteredSurahs, setFilteredSurahs] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [searchText, setSearchText] = useState(''); // State untuk pencarian
-    const [isDarkMode, setIsDarkMode] = useState(false); // State untuk mode gelap
+    const [searchText, setSearchText] = useState('');
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
         const getData = async () => {
             try {
                 const response = await axios.get('https://api.quran.gading.dev/surah');
                 setSurah(response.data.data);
-                setFilteredSurahs(response.data.data); // Inisialisasi data yang difilter
+                setFilteredSurahs(response.data.data);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching data:', error); // Tangani error jika terjadi
+                console.error('Error fetching data:', error);
             }
         };
         getData();
 
-        // Memeriksa apakah mode gelap disimpan di localStorage
         const savedMode = localStorage.getItem('darkMode');
         if (savedMode) {
             setIsDarkMode(savedMode === 'true');
         }
     }, []);
 
-    // Fungsi untuk menangani pencarian
     const handleSearch = (event) => {
         const text = event.target.value;
-        setSearchText(text); // Perbarui teks pencarian
+        setSearchText(text);
         const filtered = surahs.filter(surah =>
-            surah.name.transliteration.id.toLowerCase().includes(text.toLowerCase()) || // Filter nama transliterasi
-            surah.name.translation.id.toLowerCase().includes(text.toLowerCase()) || // Filter nama terjemahan
-            surah.number.toString().includes(text) // Filter berdasarkan nomor surah
+            surah.name.transliteration.id.toLowerCase().includes(text.toLowerCase()) ||
+            surah.name.translation.id.toLowerCase().includes(text.toLowerCase()) ||
+            surah.number.toString().includes(text)
         );
-        setFilteredSurahs(filtered); // Perbarui data yang difilter
+        setFilteredSurahs(filtered);
     };
 
-    // Fungsi untuk mengubah mode
     const toggleMode = () => {
         setIsDarkMode(prevMode => {
             const newMode = !prevMode;
-            // Simpan status mode ke localStorage
             localStorage.setItem('darkMode', newMode.toString());
             return newMode;
         });
     };
 
-    // Menentukan kelas untuk mode gelap atau terang
     const modeClass = isDarkMode ? 'dark' : 'light';
 
     return (
@@ -72,7 +67,7 @@ function Home() {
                     <input
                         type="text"
                         value={searchText}
-                        onChange={handleSearch} // Tambahkan handler pencarian
+                        onChange={handleSearch}
                         className="w-full bg-[#F1F5F9] rounded-full py-2 px-3 placeholder:opacity-50 focus:outline-emerald-200 text-black"
                         placeholder='Cari Surah'
                     />
@@ -103,9 +98,19 @@ function Home() {
                         )
                     }
                 </div>
+
+                {/* FOOTER */}
                 <footer className="footer footer-center bg-emerald-400 text-base-content p-4">
                     <aside className='text-center'>
-                        <p className='font-medium'>Made With By @Bangkah</p>
+                        <p className='font-medium'>Made With by @Bangkah</p>
+                        <a
+                            href="https://saweria.co/mdhyaulatha" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-2 inline-block bg-yellow-300 hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded-full transition-all duration-200"
+                        >
+                            ☕ Belikan Kopi
+                        </a>
                     </aside>
                 </footer>
             </div>
