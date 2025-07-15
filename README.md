@@ -60,6 +60,7 @@ Langsung pakai!
 ## ☕ Dukung Kami
 
 Suka dengan aplikasi ini? Bantu kami berkembang dengan klik tombol "☕ Belikan Kopi" di halaman utama 🙏
+ [https://saweria.co/mdhyaulatha](☕ Belikan Kopi)
 
 ---
 
