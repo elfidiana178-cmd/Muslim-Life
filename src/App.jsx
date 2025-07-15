@@ -5,6 +5,11 @@ import SurahDetail from './Pages/SurahDetail';
 import JadwalShalat from './Pages/JadwalShalat';
 import DoaHarian from './Pages/DoaHarian';
 import AsmaulHusna from './Pages/AsmaulHusna';
+import PengingatHarian from './Pages/PengingatHarian';
+import ArtikelIslami from './Pages/ArtikelIslami';
+
+
+
 
 function App() {
   return (
@@ -16,6 +21,8 @@ function App() {
         <Route path="/jadwal-shalat" element={<JadwalShalat />} />
         <Route path="/doa-harian" element={<DoaHarian />} />
         <Route path="/asmaul-husna" element={<AsmaulHusna />} />
+        <Route path="/pengingat" element={<PengingatHarian />} />
+<Route path="/artikel" element={<ArtikelIslami />} />
       </Routes>
     </BrowserRouter>
   );
