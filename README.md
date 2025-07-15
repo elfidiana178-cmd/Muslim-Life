@@ -57,10 +57,11 @@ Langsung pakai!
 
 ---
 
-## ☕ Dukung Kami
+ ## ☕ Dukung Kami
 
-Suka dengan aplikasi ini? Bantu kami berkembang dengan klik tombol "☕ Belikan Kopi" di halaman utama 🙏
- [https://saweria.co/mdhyaulatha](☕ Belikan Kopi)
+Suka dengan aplikasi ini?  
+**[Belikan saya secangkir kopi](https://saweria.co/mdhyaulatha)** untuk mendukung pengembangan Muslim Life 🙏
+
 
 ---
 
