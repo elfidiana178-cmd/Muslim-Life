@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeDashboard from './Pages/HomeDashboard';
-import SurahList from './Pages/SurahList';
-import SurahDetail from './Pages/SurahDetail';
-import JadwalShalat from './Pages/JadwalShalat';
-import DoaHarian from './Pages/DoaHarian';
-import AsmaulHusna from './Pages/AsmaulHusna';
-import PengingatHarian from './Pages/PengingatHarian';
-import ArtikelIslami from './Pages/ArtikelIslami';
+import SurahList from './Pages/Alquran/SurahList';
+import SurahDetail from './Pages/Alquran/SurahDetail';
+import JadwalShalat from './Pages/JadwalShalat/JadwalShalat';
+import DoaHarian from './Pages/DoaHarian/DoaHarian';
+import AsmaulHusna from './Pages/Asmaulhusna/AsmaulHusna';
+import PengingatHarian from './Pages/PengingatHarian/PengingatHarian';
+import ArtikelIslami from './Pages/artikelislami/ArtikelIslami';
 
 
 

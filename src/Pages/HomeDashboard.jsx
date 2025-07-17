@@ -117,7 +117,7 @@ export default function HomeDashboard() {
         {/* Donation Button */}
         <div className="mt-12 text-center">
           <a 
-            href="https://buymeacoffee.com/username" 
+            href="https://saweria.co/mdhyaulatha" 
             target="_blank" 
             rel="noopener noreferrer"
             className={`inline-block px-6 py-3 rounded-full font-medium shadow-md transition-all duration-300 hover:scale-105
