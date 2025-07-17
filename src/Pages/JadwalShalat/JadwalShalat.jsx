@@ -127,6 +127,16 @@ export default function JadwalShalat() {
             {isLoading ? 'Memuat...' : 'Lihat Jadwal Shalat'}
           </button>
 
+          {/* ✅ Tambahan button ke arah kiblat */}
+          <div className="text-center mb-6">
+            <Link
+              to="/arah-kiblat"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full shadow-md transition"
+            >
+              Lihat Arah Kiblat
+            </Link>
+          </div>
+
           {jadwal ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {Object.keys(labels).map((key) => (
