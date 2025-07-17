@@ -6,8 +6,9 @@ import JadwalShalat from './Pages/JadwalShalat/JadwalShalat';
 import DoaHarian from './Pages/DoaHarian/DoaHarian';
 import AsmaulHusna from './Pages/Asmaulhusna/AsmaulHusna';
 import PengingatHarian from './Pages/PengingatHarian/PengingatHarian';
-import ArtikelIslami from './Pages/artikelislami/ArtikelIslami';
-
+import ArtikelList from './Pages/artikelislami/ArtikelList';
+import ArtikelDetail from './Pages/artikelislami/ArtikelDetail';
+import ArahKiblat from './Pages/JadwalShalat/ArahKiblat';
 
 
 
@@ -22,7 +23,11 @@ function App() {
         <Route path="/doa-harian" element={<DoaHarian />} />
         <Route path="/asmaul-husna" element={<AsmaulHusna />} />
         <Route path="/pengingat" element={<PengingatHarian />} />
-<Route path="/artikel" element={<ArtikelIslami />} />
+        <Route path="/artikel" element={<ArtikelList />} />
+<Route path="/artikel/:id" element={<ArtikelDetail />} />
+
+<Route path="/arah-kiblat" element={<ArahKiblat />} />
+
       </Routes>
     </BrowserRouter>
   );
