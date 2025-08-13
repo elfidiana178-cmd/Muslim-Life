@@ -1,3 +1,11 @@
+<p align="center">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
+  <img alt="GitHub stars" src="https://img.shields.io/github/stars/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
+  <img alt="GitHub license" src="https://img.shields.io/github/license/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
+</p>
+
 # 🕌 Muslim Life — Aplikasi Islami Modern, Ringan, dan Bermanfaat
 
 **Muslim Life** adalah aplikasi web Islami berbasis React.js yang membantu umat Muslim dalam menjalani ibadah harian dengan lebih mudah, cepat, dan praktis.  
@@ -61,7 +69,7 @@ Desain gelap digunakan secara default untuk kenyamanan mata dan efisiensi batera
 | **MyQuran API** | Untuk data jadwal shalat |
 | **EQuran API** | Untuk data surat dan ayat Al-Qur'an |
 | **API Ninjas — Qibla API** | Untuk arah kiblat berdasarkan koordinat |
-| **React Helmet** *(opsional)* | SEO dan title dinamis |
+| **React Helmet** | SEO dan title dinamis |
 
 ---
 
@@ -78,7 +86,7 @@ Muslim Life berjalan di:
 
 Suka dengan Muslim Life?  
 Bantu pengembangan lebih lanjut:  
-☕ [Belikan saya secangkir kopi di Saweria](https://saweria.co/mdhyaulatha)
+☕ [Belikan saya secangkir kopi](https://saweria.co/mdhyaulatha)
 
 ---
 
