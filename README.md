@@ -1,9 +1,17 @@
+<!-- Badge Bertema Islami -->
 <p align="center">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
-  <img alt="GitHub issues" src="https://img.shields.io/github/issues/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
-  <img alt="GitHub stars" src="https://img.shields.io/github/stars/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
-  <img alt="GitHub license" src="https://img.shields.io/github/license/Bangkah/Muslim-Life?style=flat-square&labelColor=2d3748&color=00F700">
+  <img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <br>
+  <img src="https://img.shields.io/badge/Al--Qur'an-00A040?style=for-the-badge&logo=open-book&logoColor=white" />
+  <img src="https://img.shields.io/badge/Jadwal-Shalat-FFD700?style=for-the-badge&logo=clock&logoColor=black" />
+  <img src="https://img.shields.io/badge/Kiblat-0078D4?style=for-the-badge&logo=compass&logoColor=white" />
+  <br>
+  <img alt="GitHub stars" src="https://img.shields.io/github/stars/Bangkah/Muslim-Life?style=for-the-badge&color=00A040&labelColor=20232A" />
+  <img alt="GitHub license" src="https://img.shields.io/github/license/Bangkah/Muslim-Life?style=for-the-badge&color=FFD700&labelColor=20232A" />
 </p>
 
 # 🕌 Muslim Life — Aplikasi Islami Modern, Ringan, dan Bermanfaat
