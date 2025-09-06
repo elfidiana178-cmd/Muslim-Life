@@ -213,7 +213,7 @@ function SurahDetail() {
 
         <footer className="footer footer-center bg-emerald-400 text-base-content p-4 mt-5 rounded shadow">
           <aside className="text-center">
-            <p className="font-medium">Made With ❤️ by @Bangkah</p>
+            <p className="font-medium">Made With by @Bangkah</p>
           </aside>
         </footer>
       </div>
